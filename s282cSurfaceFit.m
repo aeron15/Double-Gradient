@@ -1,12 +1,12 @@
-%% Collect and combine all the s282c replicates into one format
+function s282cSurfaceFit()
+
+%% Collect and combine all the s288c replicates into one format
 % M matrix for ploting including zeros in a sperate row
 % D matrix for fitting purposes
-
 
 pathdata1='/Users/RenanEscalante/Dropbox/Galactose_Pathway/gal_paper/Data/Gal2FullD/20140331_large_DG_gal2del/output/';
 
 %%
-
 number = {'01' '02' '03' '04' '05' '06' '07' '08' '09' '10' '11' '12'};
 well = {'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H'};
 
@@ -30,8 +30,6 @@ figure_folder = '../../../papers/';
 % cmap = buildcmap_YS([254,237,222;253,190,133;253,141,60;217,71,1]/255);
 
 %% Replicate 1
-%load('C:\Users\yoni\Dropbox\gal_paper\Data\Gal2FullD\20140331_large_DG_gal2del\output\plates_hists')
-%load('../../../Data/Gal2FullD/20140331_large_DG_gal2del/output/plates_hists')
 
 load([pathdata1 'plates_hists']);
 
@@ -78,17 +76,13 @@ plates = {'Plate_A' 'Plate_B' 'Plate_C' 'Plate_D' 'Plate_E' 'Plate_F'};
 d = [0,0;0,12;8,0;8,12;16,0;16,12];
 
 pathdata2='/Users/RenanEscalante/Dropbox/Galactose_Pathway/gal_paper/Data/s288c/20140217_4283/output/';
-%load('C:\Users\ys151\Dropbox\gal_paper\Data\s288c\20140217_4283\output\plates_hists_EMD')
-%load('../../../Data/s288c/20140217_4283/output/plates_hists_EMD')
 load([pathdata2 'plates_hists_EMD'])
-
 
 data = struct2cell(plates_hists);
 
 [E_area{2},E_prec{2},E_mean{2}] = Plates2mat(plates,data,plates_hists,d,map,th_const,off_peak);
 
 % remove low and high gloucse rows:
-
 E_area{2} = E_area{2}(1:end-4,:); %remove NaN from high glc
 E_prec{2} = E_prec{2}(1:end-4,:); %remove NaN from high glc
 E_mean{2} = E_mean{2}(1:end-4,:); %remove NaN from high glc
@@ -114,15 +108,12 @@ Set_fig_RE(figure(i),12,12,12)
 % plot(x_off_bfp,y_off_bfp);hold on
 %% Replicate 3
 
-
 plates = {'Plate_A' 'Plate_B' 'Plate_C' 'Plate_D' 'Plate_E' 'Plate_F'};
 
 d = [0,0;0,12;8,0;8,12;16,12;16,0];
 
 pathdata3='/Users/RenanEscalante/Dropbox/Galactose_Pathway/gal_paper/Data/s288c/20140217_YM4277_mig1_del_Gal4/output/';
 load([pathdata3 'plates_hists_EMD'])
-%load('C:\Users\ys151\Dropbox\gal_paper\Data\s288c\20140217_YM4277_mig1_del_Gal4\output\plates_hists_EMD')
-%load('../../../Data/s288c/20140217_YM4277_mig1_del_Gal4/output/plates_hists_EMD')
 
 data = struct2cell(plates_hists);
 
@@ -150,9 +141,6 @@ colormap(cmap)
 Set_fig_RE(figure(i),17,12,12)
 
 %% Replicate 4
-
-%load('C:\Users\ys151\Dropbox\gal_paper\Data\s288c\\20131019_2D_LG\output\plates_hists_EMD')
-%load('../../../Data/s288c/20131019_2D_LG/output/plates_hists_EMD')
 
 pathdata4='/Users/RenanEscalante/Dropbox/Galactose_Pathway/gal_paper/Data/s288c/20131019_2D_LG/output/';
 load([pathdata4 'plates_hists_EMD'])
